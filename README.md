@@ -10,3 +10,4 @@ run application with:
 ```sh
 docker-compose up -d
 ```
+application available on port :80
