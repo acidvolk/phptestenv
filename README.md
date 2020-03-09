@@ -4,8 +4,9 @@ get code with :
 ```sh
 get clone https://github.com/acidvolk/phptestenv.git
 ```
-configure database root password user and password and database name at .env file and credentials for php application at php.env file.
+configure database root password user and password and database name at .env file and credentials for php application at php.env file
+
 run application with:
 ```sh
-deocker-compose up -d
+docker-compose up -d
 ```
