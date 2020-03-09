@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+    www:
+        build: php/
+        ports: 
+            - "80:80"
+        volumes:
+            - ./www:/var/www/html/
+        links:
+            - db
+        env_file:
+            - php.env
+        networks:
+            - test
+    db:
+        image: mysql:5.7
+        ports: 
+            - "3306:3306"
+        environment:
+           MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+           MYSQL_DATABASE: ${MYSQL_DATABASE}
+           MYSQL_USER: ${MYSQL_USER}
+           MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        volumes:
+            - ./sql:/docker-entrypoint-initdb.d
+
+            - persistent:/var/lib/mysql
+        networks:
+            - test
+
+volumes:
+    persistent:
+
+networks:
+    test:         
